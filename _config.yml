@@ -1,0 +1,21 @@
+title: Alex Podikoglou
+email: alex.podikoglou@gmail.com
+description: >-
+  I’m a Computer Science student from Thessaloniki. I like to dabble in
+  different technologies and read about computers and linguistics. I’m
+  interested in Systems Programming and Distributed Systems. In the past I have
+  worked on numerous Game Server-related projects in Java.
+
+baseurl: ""
+url: "https://podikoglou.eu"
+
+github_username: podikoglou
+
+plugins:
+  - jekyll-feed
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+highlighter: rouge

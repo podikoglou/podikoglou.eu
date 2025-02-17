@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/assets/css/main.css" />
+    <link rel="stylesheet" type="text/css" href="/assets/css/Iosevka.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Recursive:wght@300..1000&display=swap" rel="stylesheet">
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title="Blog"
+      href="{{ site.url }}/feed.xml"
+    />
+  </head>
+  <body>
+    <header>
+      {% include navbar.html %}
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      {% include footer.html %}
+    </footer>
+  </body>
+</html>
