@@ -28,6 +28,11 @@ nav ul li {
   list-style: none;
 }
 
+#articles li {
+  display: flex;
+  justify-content: space-between;
+}
+
 /* footer */
 footer hr {
   margin-top: 40px;
