@@ -2,10 +2,7 @@ title: Alex Podikoglou
 email: alex.podikoglou@gmail.com
 description: >-
   I’m a Computer Science student from Thessaloniki. I like to dabble in
-  different technologies and read about computers and linguistics. I’m
-  interested in Systems Programming and Distributed Systems. In the past I have
-  worked on numerous Game Server-related projects in Java.
-
+  different technologies and read about computers and linguistics.
 baseurl: ""
 url: "https://podikoglou.eu"
 
@@ -18,6 +15,7 @@ collections:
 
 plugins:
   - jekyll-feed
+  - jekyll-seo-tag
 
 markdown: kramdown
 
