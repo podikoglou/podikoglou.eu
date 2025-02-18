@@ -33,6 +33,16 @@ nav ul li {
   justify-content: space-between;
 }
 
+#misc ul {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+#misc ul li {
+  list-style: none;
+}
+
 /* footer */
 footer hr {
   margin-top: 40px;

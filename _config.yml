@@ -11,11 +11,18 @@ url: "https://podikoglou.eu"
 
 github_username: podikoglou
 
+collections:
+  misc:
+    output: true
+    permalink: /:name
+
 plugins:
   - jekyll-feed
 
 markdown: kramdown
+
 kramdown:
   input: GFM
   hard_wrap: false
+
 highlighter: rouge

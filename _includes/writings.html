@@ -15,4 +15,21 @@
     </ul>
 
   </div>
+
+  <!-- other writing -->
+  <div id="misc">
+
+    <h3>Other Writing</h3>
+
+    <ul>
+      {% for page in site.misc %}
+        <li>
+          <a href="{{ page.url }}">{{ page.title }}</a>{% unless forloop.last %},{% endunless %}
+        </li>
+      {% endfor %}
+    </ul>
+
+
+  </div>
+
 </div>
