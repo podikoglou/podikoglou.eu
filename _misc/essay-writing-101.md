@@ -1,6 +1,7 @@
 ---
 title: "Essay Writing 101"
 layout: default
+hidden: true
 ---
 
 # {{ page.title }}

@@ -23,9 +23,11 @@
 
     <ul>
       {% for page in site.misc %}
-        <li>
-          <a href="{{ page.url }}">{{ page.title }}</a>{% unless forloop.last %},{% endunless %}
-        </li>
+        {% unless page.hidden %}
+          <li>
+            <a href="{{ page.url }}">{{ page.title }}</a>{% unless forloop.last %},{% endunless %}
+          </li>
+        {% endunless %}
       {% endfor %}
     </ul>
 
