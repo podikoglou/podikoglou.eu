@@ -1,0 +1,5 @@
+Feel free to contact me if you'd like to collaborate or discuss future opportunities:
+
+- Email: [alex.podikoglou@gmail.com](alex.podikoglou@gmail.com)
+- GitHub: [@podikoglou](https://github.com/podikoglou)
+- Linkedin: [@apodikoglou](https://www.linkedin.com/in/apodikoglou/)
