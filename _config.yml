@@ -16,7 +16,6 @@ collections:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jekyll-email-protect
 
 markdown: kramdown
 
