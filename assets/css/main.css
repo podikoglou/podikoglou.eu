@@ -55,14 +55,11 @@ aside {
 }
 
 /* code */
-pre {
-  overflow: auto;
-  word-wrap: normal;
-  white-space: pre;
-  display: block;
-  padding: 15px;
+pre.highlight>code {
+    display: block;
+    padding: 15px;
 
-  font-family: "Iosevka Web", sans-serif;
+    font-family: "Iosevka Web", monospace;
 }
 
 /* color scheme */
