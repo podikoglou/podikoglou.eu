@@ -1,3 +1,8 @@
+---
+title: Writing
+permalink: /writing
+---
+
 # Writing
 
 I like to write at times. I mostly write about technical topics that interest
