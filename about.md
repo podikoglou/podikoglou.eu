@@ -23,11 +23,11 @@ Some notable projects I've worked on include:
 
 - a [TypeScript to C Transpiler](https://github.com/podikoglou/type-c): An
   experimental tool that translate C-like TypeScript code into C.
-  [[Article]](http://podikoglou.eu/compiler/transpiler/c/typescript/2024/08/13/transpiling-typescript-to-c.html)
+  [[Article]](https://podikoglou.eu/compiler/transpiler/c/typescript/2024/08/13/transpiling-typescript-to-c.html)
 
 - a [Superoptimization Toolchain](https://github.com/podikoglou/superr): A
   program and library for experimenting with optimization algorithms.
-  [[Article]](http://podikoglou.eu/rust/superr/vm/2024/07/13/writing-a-superoptimization-toolchain.html)
+  [[Article]](https://podikoglou.eu/rust/superr/vm/2024/07/13/writing-a-superoptimization-toolchain.html)
 
 ## Interests
 
