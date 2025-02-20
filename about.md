@@ -11,6 +11,12 @@ dabbling in different technologies and programming languages. I primarily enjoy
 writing code in TypeScript, Rust and Go.
 
 ### Work
+## Current Focus
+I'm currently:
+- doing my BSc in Computer Science in Thessaloniki
+- going through [Crafting Interpreters](https://www.craftinginterpreters.com/)
+- working on [superr](https://github.com/podikoglou/superr)
+- learning Dutch
 
 Some notable projects I've worked on include:
 
