@@ -48,14 +48,14 @@ bit. For now, I'll show you what `type-c` code looks like.
 I mentioned the fact that `type-c` doesn't expose a `console` object, so how
 does one log something? the answer is `printf`.
 
-```typescript
+```ts
 printf("Hello, C!\n");
 ```
 
 But that's not a correct `type-c` program. You need to export a `main`
 function, just like C programs. Oh, and you need to import `printf`.
 
-```typescript
+```ts
 import { printf } from "stdio.h";
 
 export function main(argc: number, argv: string[]): number {
@@ -96,7 +96,7 @@ One thing that was fun to implement was pointers. TypeScript obviously won't
 allow us to use the `&` and `*` characters like we do in C, so I opted for a
 solution that is more native to TypeScript.
 
-```typescript
+```ts
 let foo: number = 8;
 let fooPtr: Pointer<number> = ptr(foo);
 
@@ -116,7 +116,7 @@ foo = *fooPtr;
 not implemented in TypeScript, but this is what their declarations would look
 like:
 
-```typescript
+```ts
 declare function ptr<T>(value: T): Pointer<T>;
 declare function deref<T>(value: Pointer<T>): T;
 ```
@@ -129,7 +129,7 @@ Since pointers work, I also implemented arrays. Well, sort of. I didn't really
 know how to implement fixed-size arrays due to the limitations of TypeScript's
 syntax, but I did get this to work:
 
-```typescript
+```ts
 let primes: number[] = [2, 3, 5, 7, 11, 13];
 ```
 
@@ -141,7 +141,7 @@ int primes[] = {2, 3, 5, 7, 11, 13};
 
 You can even use `sizeof` like so:
 
-```typescript
+```ts
 import { printf } from "stdio.h";
 
 export function main(): number {
@@ -160,7 +160,7 @@ don't really define the `int` symbol.
 
 Nevertheless, it somehow works.
 
-```typescript
+```ts
 sizeof(int); // => 4
 ```
 
@@ -168,7 +168,7 @@ Other than that, I've implemented the rest of the basic language features:
 while loops, for loops (only the c-like ones though -- I couldn't figure out
 how to do for..of and for..in)
 
-```typescript
+```ts
 let i: number = 0;
 
 while (i < 99) {
@@ -261,7 +261,7 @@ statement.update.trim_end_matches(";");
 
 Before I dive into the implementation details, here's bubble sort:
 
-```typescript
+```ts
 export function bubbleSort(arr: number[], n: number): void {
   let i: number;
   let j: number;
