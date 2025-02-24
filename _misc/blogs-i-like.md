@@ -8,21 +8,18 @@ layout: default
 This is a collection of blogs / personal websites which I like. This is updated
 when I find a new website that intrigues me.
 
-<small>these are obviously not in a specific order, except for the first one
-(for visibility)</small>
-
-- http://www.aaronsw.com/weblog/archive
-- https://justine.lol
-- https://paulbutler.org/
-- https://jimmyhmiller.github.io/
-- https://nick.groenen.me/personal-manual/
-- https://felipe.rs/
-- https://keleshev.com/
-- https://blog.yusu.ke/
-- https://www.dannyvankooten.com/blog/
-- https://lpil.uk/
-- https://research.swtch.com/
-- https://stephango.com/
-- https://monkey.org/~marius/
-- https://acroz.dev/topics/
-- https://www.fosskers.ca/en/blog
+- [justine.lol](https://justine.lol)
+- [paulbutler.org](https://paulbutler.org/)
+- [jimmyhmiller.github.io](https://jimmyhmiller.github.io/)
+- [nick.groenen.me](https://nick.groenen.me/personal-manual/)
+- [aaronsw.com](http://www.aaronsw.com/weblog/archive)
+- [felipe.rs](https://felipe.rs/)
+- [keleshev.com](https://keleshev.com/)
+- [blog.yusu](https://blog.yusu.ke/)
+- [dannyvankooten.com](https://www.dannyvankooten.com/blog/)
+- [lpil.uk](https://lpil.uk/)
+- [research.swtch](https://research.swtch.com/)
+- [stephango.com](https://stephango.com/)
+- [monkey.org/~marius](https://monkey.org/~marius/)
+- [acroz.dev](https://acroz.dev/topics/)
+- [fosskers.ca](https://www.fosskers.ca/en/blog)
