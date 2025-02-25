@@ -18,7 +18,7 @@ in the future (likely in an alternate universe). It also serves as a form of
 [learning in public][1], which I've recently
 seen being popular.
 
-Over the past month or so I've been [re-thinking][2] my project [superr][3].
+Over the past month or so I've been [rethinking][2] my project [superr][3].
 Superr is a toy project I've been working on for the past year on-and-off,
 where I explore [superoptimization][4]. The project (currently) consists of:
 
@@ -30,15 +30,17 @@ where I explore [superoptimization][4]. The project (currently) consists of:
 3. Two **superoptimization strategies**: **Random Search** and **Exhaustive**
 
 Currently, there are several things that are wrong with this approach:
-1. The VM doesn't use registers nor a stack -- it simply has an array of bytes
-   for memory, and the addresses to it are its indices.
+
+1. The VM uses neither registers nor a stack -- it simply has a byte array
+   for memory which is referenced by its indices.
 
 2. The assembly is being parsed by the VM directly, rather than having some
    sort of bytecode format.
 
-These are bad architectural decisions, mostly because they are not very similar
-to how actual CPUs or language VMs work. Ideally, they should feel at least a
-little bit familiar to both assembly programmers, and designers of language VMs.
+These architectural decisions are not ideal, primarily because they are not
+very similar to how actual CPUs or language VMs work. Ideally, they should feel
+at least a little bit familiar to both assembly programmers, and designers of
+language VMs.
 
 It should be noted that the original design choices were based on no prior
 experience with VMs, CPUs or similar topics and were very rough.
