@@ -12,20 +12,17 @@ categories:
 
 _Last Updated on July 23rd_
 
-_All the code is [on my GitHub](https://github.com/podikoglou/superr)_
+_All the code is [on my GitHub][1]_
 
 ## Prelude
 
-I started this project about [a year
-ago](https://github.com/podikoglou/superr/commit/5f053cb508cc2e700a8e4cde82605513d487cc0d),
-when I read [this article by Austin
-Henley](https://austinhenley.com/blog/superoptimizer.html) and was inspired to
-replicate his efforts in a faster language, hoping to see better results.
+I started this project about [a year ago][2], when I read [this article by
+Austin Henley][3] and was inspired to replicate his efforts in a faster
+language, hoping to see better results.
 
-In case you don't know what a
-[Superoptimizer](https://en.wikipedia.org/wiki/Superoptimization) is, it's
-pretty simple: it's an algorithm that tries to rewrite a given program with as
-little instructions as possible.
+In case you don't know what a [Superoptimizer][4] is, it's pretty simple: it's
+an algorithm that tries to rewrite a given program with as little instructions
+as possible.
 
 Austin's blog post implemented a very simple VM which uses an equivalently
 simple instruction set, and on top of it, a _superoptimizer_, which worked by
@@ -254,7 +251,7 @@ You may notice a few functions which I haven't discussed yet:
 
 ##### generate_program()
 
-[`generate_program`](https://github.com/podikoglou/superr/blob/9e4426ddbff875f235c96b9f6b9a3402f3ef5934/superr_optimizers/src/optimizers/random_search.rs#L191)
+[`generate_program`][5]
 randomly generates a program. The variables that are randomized are the
 following:
 
@@ -309,6 +306,12 @@ Here's the Random Search Optimizer in action:
 #### Optimizer #2: Exhaustive Search
 
 I'm still working on the implementation of this optimizer. [Although it's
-functional](https://github.com/podikoglou/superr/blob/main/superr_optimizers/src/optimizers/exhaustive.rs),
-there are lots of optimizations and code improvement that need to be done
-before I present it here.
+functional][6], there are lots of optimizations and code improvement that need
+to be done before I present it here.
+
+[1]: https://github.com/podikoglou/superr
+[2]: https://github.com/podikoglou/superr/commit/5f053cb508cc2e700a8e4cde82605513d487cc0d
+[3]: https://austinhenley.com/blog/superoptimizer.html
+[4]: https://en.wikipedia.org/wiki/Superoptimization
+[5]: https://github.com/podikoglou/superr/blob/9e4426ddbff875f235c96b9f6b9a3402f3ef5934/superr_optimizers/src/optimizers/random_search.rs#L191
+[6]: https://github.com/podikoglou/superr/blob/main/superr_optimizers/src/optimizers/exhaustive.rs

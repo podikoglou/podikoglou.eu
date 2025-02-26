@@ -11,16 +11,14 @@ categories:
 
 # {{ page.title }}
 
-The code for this project is [available on GitHub](https://github.com/podikoglou/type-c).
+The code for this project is [available on GitHub][1].
 
 ## Preamble
 
 I recently noticed that some people don't know what a transpiler is. I figured
-that it's because it's a relatively new term (or rather, it [only
-recently](https://github.com/babel/babel/commit/c97696c224d718d96848df9e1577f337b45464be)
-started getting traction). Some people [even refuse to use the
-term](https://rachit.pl/post/transpiler/), which I understand, to a certain
-extent.
+that it's because it's a relatively new term (or rather, it [only recently][2]
+started getting traction). Some people [even refuse to use the term][3], which
+I understand, to a certain extent.
 
 **In short**: a Transpiler is a Source-to-source compiler.
 
@@ -301,13 +299,12 @@ void bubbleSort(int arr[], int n) {
 ## Implementation
 
 My first implementation was in TypeScript itself, since I thought It would have
-better support for the language. I used [swc](https://swc.rs/)'s parser's
-bindings for TypeScript. I quickly realized that I was not enjoying the library
-or the workflow and so I opted in for Rust, which `swc` is written in.
+better support for the language. I used [swc][4]'s parser's bindings for
+TypeScript. I quickly realized that I was not enjoying the library or the
+workflow and so I opted in for Rust, which `swc` is written in.
 
-I decided to create my own
-[IR](https://en.wikipedia.org/wiki/Intermediate_representation), which is
-basically a dumbed down AST which is derived from SWC's AST.
+I decided to create my own [IR][5], which is basically a dumbed down AST which
+is derived from SWC's AST.
 
 This is what my IR's root looks like:
 
@@ -343,9 +340,8 @@ pub enum Statement {
 }
 ```
 
-I used [SWC's Visit API](https://rustdoc.swc.rs/swc_visit/index.html). I
-initially didn't fully understand how the library works or the Visitor Pattern
-worked, but I eventually figured it out.
+I used [SWC's Visit API][6]. I initially didn't fully understand how the
+library works or the Visitor Pattern worked, but I eventually figured it out.
 
 I implemented a `Visitor` struct implementing its `Visit` trait. The struct
 contains some state:
@@ -462,10 +458,9 @@ def_codegen!(Import, |import| {
 ```
 
 You will notice the `CodeBuffer` struct. This is my poor attempt at making some
-sort of
-[StringBuilder](https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html)
-equivalent for Rust. It's not fully needed but I think it's a pretty clean way
-to write code generation code. This is roughly what it looks like:
+sort of [StringBuilder][7] equivalent for Rust. It's not fully needed but I
+think it's a pretty clean way to write code generation code. This is roughly
+what it looks like:
 
 ```rs
 pub struct CodeBuffer {
@@ -585,3 +580,11 @@ Benchmark 1: target/release/type-c-rs examples/bubble_sort.ts
   Time (mean ± σ):       1.3 ms ±   0.1 ms    [User: 0.5 ms, System: 0.4 ms]
   Range (min … max):     1.2 ms …   2.1 ms    2258 runs
 ```
+
+[1]: https://github.com/podikoglou/type-c
+[2]: https://github.com/babel/babel/commit/c97696c224d718d96848df9e1577f337b45464be
+[3]: https://rachit.pl/post/transpiler/
+[4]: https://swc.rs/
+[5]: https://en.wikipedia.org/wiki/Intermediate_representation
+[6]: https://rustdoc.swc.rs/swc_visit/index.html
+[7]: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
