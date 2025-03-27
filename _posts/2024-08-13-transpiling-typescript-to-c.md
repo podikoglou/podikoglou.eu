@@ -13,36 +13,22 @@ categories:
 
 The code for this project is [available on GitHub][1].
 
-## Preamble
-
-I recently noticed that some people don't know what a transpiler is. I figured
-that it's because it's a relatively new term (or rather, it [only recently][2]
-started getting traction). Some people [even refuse to use the term][3], which
-I understand, to a certain extent.
-
-**In short**: a Transpiler is a Source-to-source compiler.
-
-<hr>
-
 Over the past few days, I've been working on a little program which transpiles
-TypeScript into C. It's called `type-c`. This is a fairly hard task, since the
-two languages follow two completely different paradigms. Thankfully, TypeScript
-exists, and with its (partially) static typing system, relating the code to
-other statically typed languages becomes more manageable.
+TypeScript to C. It's called `type-c`. This is an interesting task, because:
+1) TypeScript and C are two **very** different languages,
+2) Using TypeScript allows us to skip the analysis stage and work straight with
+   the AST
 
 `type-c` doesn't do much. It doesn't inject polyfills into your code, so your
 TypeScript program must adapt to C's conventions and paradigm. That goes
-without saying that it doesn't implement JavaScript's or TypeScript's standard
-library, including `console`, `Array`, or any FP-related functions like
-`forEach` or `map`.
+without saying that it doesn't have support for JS/TS's standard library, like
+`console`, `Array`, or any FP-related functions like `forEach` or `map`.
 
 This design choice made the project's goal clearer: to be able to write C with
 the syntax of TypeScript. Obviously, there's no particular reason that anyone
-would want to do this, but it's a fun experiment.
+would want to do this, but it's still a fun experiment.
 
-I will talk about the specifics of how I implemented the transpiler in a little
-bit. For now, I'll show you what `type-c` code looks like.
-
+## What it looks like
 I mentioned the fact that `type-c` doesn't expose a `console` object, so how
 does one log something? the answer is `printf`.
 
@@ -62,7 +48,7 @@ export function main(argc: number, argv: string[]): number {
 }
 ```
 
-This obviously compiles to the following:
+This compiles to the following:
 
 ```c
 #include <stdio.h>
@@ -73,26 +59,30 @@ int main(int argc, char** argv) {
 }
 ```
 
-You may notice the import -- it imports the `printf` function from the
-`stdio.h` module. When this is transpiled, the items which are imported aren't
-really taken into consideration, but you _do_ need to import something, so that
-the header file is included.
+### Imports
+You likely noticed the import -- it imports `printf` from `stdio.h`. This is
+the way to `#include` header files from within TypeScript in `type-c`. The item
+that is being imported doesn't really matter, but it matters very much that
+there is an import statement with the header file which needs to be included.
 
-This also applies to booleans due to the nature of C.
-
+Of course, the same applies for booleans.
 ```ts
 import { true, false } from "stdbool.h";
 ```
 
+### Types
 You may also notice that we only really have one number type: `number`, which
-is just translated to `int` in C. That is because JS/TS uses a single type for
-all kinds of numbers (an `f64`). Obviously, making the `number` type equivalent
-to a 64 bit float in C is stupid and wasteful. What would the main function
-even return?
+is just translated to `int` in C. That is because JS/TS uses a *single* type
+for all kinds of numbers (backed by a `f64`). 
 
-One thing that was fun to implement was pointers. TypeScript obviously won't
-allow us to use the `&` and `*` characters like we do in C, so I opted for a
-solution that is more native to TypeScript.
+I decided to map `number` to an `int` rather than a `double`, because `int` is
+more commonly used, particularly in critical parts such as the `main`
+function's return type.
+
+### Pointers
+One thing that was fun to implement were pointers. TypeScript obviously won't
+allow us to use `&` and `*` characters like we do in C, so I opted for a
+solution that feels more native to TypeScript.
 
 ```ts
 let foo: number = 8;
@@ -111,27 +101,18 @@ foo = *fooPtr;
 ```
 
 `ptr` and `deref` are currently the only builtin functions. They're obviously
-not implemented in TypeScript, but this is what their declarations would look
-like:
+not implemented in TypeScript -- `type-c` syntactically replaces them to the
+equivalent C syntax.
 
-```ts
-declare function ptr<T>(value: T): Pointer<T>;
-declare function deref<T>(value: Pointer<T>): T;
-```
-
-Although these make sense as declarations, they don't make a lot of sense due
-to JavaScript's nature of passing primitive arguments by value and not by
-reference.
-
-Since pointers work, I also implemented arrays. Well, sort of. I didn't really
-know how to implement fixed-size arrays due to the limitations of TypeScript's
-syntax, but I did get this to work:
+### Arrays
+Since pointers work, I also implemented arrays, sort of. I couldn't implement
+fixed-sized arrays because of TypeScript not allowing the syntax.
 
 ```ts
 let primes: number[] = [2, 3, 5, 7, 11, 13];
 ```
 
-which transpiles into the following:
+transpiles into the following:
 
 ```c
 int primes[] = {2, 3, 5, 7, 11, 13};
@@ -140,31 +121,22 @@ int primes[] = {2, 3, 5, 7, 11, 13};
 You can even use `sizeof` like so:
 
 ```ts
-import { printf } from "stdio.h";
-
-export function main(): number {
-  let primes: number[] = [2, 3, 5, 7, 11, 13];
-  let primes_len: number = sizeof(primes) / sizeof(primes[0]);
-
-  printf("primes_len = %d\n", primes_len);
-
-  return 0;
-}
+let primes: number[] = [2, 3, 5, 7, 11, 13];
+let primes_len: number = sizeof(primes) / sizeof(primes[0]);
 ```
 
-In C, I'd usually opt in for dividing by `sizeof(int)` instead of
-`sizeof(primes[0])`, but it doesn't really make a lot of sense here since we
-don't really define the `int` symbol.
+A more common practice in C when wanting to get the length of an array is to
+divide by the size of the data type which the array holds, like `sizeof(int)`.
 
-Nevertheless, it somehow works.
+This is possible in `type-c`:
 
 ```ts
 sizeof(int); // => 4
 ```
 
-Other than that, I've implemented the rest of the basic language features:
-while loops, for loops (only the c-like ones though -- I couldn't figure out
-how to do for..of and for..in)
+### Control Flow
+`while` loops were trivial to implement -- the syntax is for the most part
+identical between TypeScript and C:
 
 ```ts
 let i: number = 0;
@@ -173,29 +145,21 @@ while (i < 99) {
   printf("i = %d\n", i);
   i++;
 }
-
-for (let i: number = 0; i < 99; i++) {
-  printf("i = %d\n", i);
-}
 ```
 
-is transpiled into:
-
+transpiles to:
 ```c
 int i = 0;
 while (i < 99) {
   printf("i = %d\n", i);
   i = i + 1;
 }
-for (int i = 0; i < 99; i = i + 1) {
-  printf("i = %d\n", i);
-}
 ```
 
-I did have some trouble implementing the for loops, primarily because of the
-semicolons. I'll elaborate on that.
+I did have some trouble implementing `for` loops, primarily because of the
+semicolons.
 
-Here is my for loop struct:
+Here is my `for` loop struct:
 
 ```rust
 pub struct ForStatement {
@@ -207,8 +171,8 @@ pub struct ForStatement {
 }
 ```
 
-You can see it primarily contains three fields (the body is not very relevant
-to my issue.)
+You can see that it primarily contains three fields (the body is not very
+relevant to this issue.)
 
 To make sure we're on the same page, this is what each of the fields mean.
 
@@ -233,31 +197,34 @@ for(int i = 0; i < 5; i++) {
 - `i < 5` is `test`
 - `i++` is `update`
 
-In my transpiler, I'd _always_ write a semicolon after statements, since before
-I implemented for loops, they only appeared in places where you'd need a
-semicolon (in their own lines).
-When implementing for loops I realised that statements don't only appear in
-their own lines.
+The problem is that my transpiler would *always* write a semicolon after
+statements. If I was to revisit the project I would change that, but as of
+writing, this is how it's currently done. The problem is that the `update`
+statement would *also* have a semicolon, which is invalid syntax in C, at least
+for `gcc`.
 
-I think it would be perfectly logical to terminate **all** statements with a
-semicolon. This looks normal to me:
-
-```c
-for(int i = 0; i < 99; i++;) {
-    ...
-}
-```
-
-Yet C doesn't allow it.
-
-Since I believe this is an inconsistency in C's design, I opted in for an
-inconsistency on my transpiler:
-
+I wasn't sure of how to fix it so I just opted in for a hacky solution, which
+I'm really not proud of:
 ```rs
 statement.update.trim_end_matches(";");
 ```
 
-Before I dive into the implementation details, here's bubble sort:
+Now, it works:
+```ts
+for (let j: number = 0; j < 99; j++) {
+  printf("j = %d\n", j);
+}
+```
+
+transpiles to
+```c
+for (int i = 0; i < 99; i = i + 1) {
+  printf("i = %d\n", i);
+}
+```
+
+### Bubble Sort
+`type-c` can successfuly compile Bubble sort.
 
 ```ts
 export function bubbleSort(arr: number[], n: number): void {
@@ -269,6 +236,7 @@ export function bubbleSort(arr: number[], n: number): void {
     for (j = 0; j < n - i - 1; j++) {
       if (arr[j] > arr[j + 1]) {
         temp = arr[j];
+
         arr[j] = arr[j + 1];
         arr[j + 1] = temp;
       }
@@ -299,11 +267,11 @@ void bubbleSort(int arr[], int n) {
 ## Implementation
 
 My first implementation was in TypeScript itself, since I thought It would have
-better support for the language. I used [swc][4]'s parser's bindings for
+better support for the language. I used [swc][2]'s parser's bindings for
 TypeScript. I quickly realized that I was not enjoying the library or the
-workflow and so I opted in for Rust, which `swc` is written in.
+workflow, so I opted in for Rust, which `swc` is written in.
 
-I decided to create my own [IR][5], which is basically a dumbed down AST which
+I decided to create my own [IR][3], which is basically a dumbed down AST which
 is derived from SWC's AST.
 
 This is what my IR's root looks like:
@@ -315,7 +283,7 @@ pub struct Program {
 }
 ```
 
-And this is what the `Method` struct looks like:
+This is what the `Method` struct looks like:
 
 ```rs
 pub struct Method {
@@ -340,8 +308,8 @@ pub enum Statement {
 }
 ```
 
-I used [SWC's Visit API][6]. I initially didn't fully understand how the
-library works or the Visitor Pattern worked, but I eventually figured it out.
+I used [SWC's Visit API][4]. I initially didn't fully understand how the
+library or the Visitor Pattern worked, but I eventually figured it out.
 
 I implemented a `Visitor` struct implementing its `Visit` trait. The struct
 contains some state:
@@ -371,11 +339,10 @@ fn visit_param(&mut self, node: &swc_ecma_ast::Param) { ... }
 fn visit_stmt(&mut self, node: &swc_ecma_ast::Stmt) { ... }
 ```
 
-I won't go into detail as to what they do specifically, but basically, they
-recursively visit the AST nodes and convert them into my IR.
-
-I call this step "parsing". I know it's not the right word, but I didn't know
-what else to call it.
+I won't go into detail as to what they do specifically, [you can look into that
+yourself][5] but short: they recursively visit the AST nodes and convert them
+into my IR. In the codebase I call this step "parsing", even though it's not
+really parsing, but it's close enough.
 
 I came up with a trait called `ToIR`
 
@@ -388,7 +355,7 @@ pub trait ToIR<T> {
 Obviously I could've just used `From` but I think this organizes the code
 better. I might eventually refactor the codebase to use `From`.
 
-My code structure went through quite a few different phases, but It ultimately
+My code structure went through quite a few different phases, but it ultimately
 ended up looking like this.
 
 ```
@@ -435,8 +402,8 @@ def_parser!(CallExpr, Expression, |expr| {
 });
 ```
 
-Yes, I know, the error handling is _nasty_. I am not proud of the code quality.
-I will slowly start to refactor it now that the project is for the most part
+Right now, the error handling is _nasty_. I am not proud of the code quality. I
+will slowly start to refactor it now that the project is for the most part
 functional.
 
 The important part is that I implemented a macro for implementing parsers, and
@@ -458,9 +425,9 @@ def_codegen!(Import, |import| {
 ```
 
 You will notice the `CodeBuffer` struct. This is my poor attempt at making some
-sort of [StringBuilder][7] equivalent for Rust. It's not fully needed but I
+sort of [StringBuilder][6] equivalent for Rust. It's not fully needed but I
 think it's a pretty clean way to write code generation code. This is roughly
-what it looks like:
+what its API looks like.
 
 ```rs
 pub struct CodeBuffer {
@@ -468,25 +435,9 @@ pub struct CodeBuffer {
 }
 
 impl CodeBuffer {
-    pub fn write<S: Into<String>>(&mut self, content: S) {
-        let content = content.into();
-
-        if let Some(last) = self.lines.last_mut() {
-            last.push_str(&content);
-        } else {
-            self.write_line(content);
-        }
-    }
-
-    pub fn write_line<S: Into<String>>(&mut self, content: S) {
-        let content = content.into();
-
-        self.lines.push(content);
-    }
-
-    pub fn concat(&mut self, other: &CodeBuffer) {
-        self.lines.extend(other.lines.clone());
-    }
+    pub fn write<S: Into<String>>(&mut self, content: S) { ... }
+    pub fn write_line<S: Into<String>>(&mut self, content: S) { ... }
+    pub fn concat(&mut self, other: &CodeBuffer) { ... }
 }
 ```
 
@@ -513,78 +464,20 @@ def_codegen!(Expression, |expr| {
 });
 ```
 
-### Recap
+## Recap
 
 To recap, the code goes through this process:
 
-- parsed by SWC, converting it to an AST
-- AST is walked, creating IR AST
-- IR AST is walked, converting it into C
+1. Parsed by SWC, converting it to an AST
+2. AST is walked, converting it to the IR
+3. IR is walked, converting it into C
 
 PS: The smallest part of the codebase is the codegen, so It'd be super easy to
 change the language it's transpiled to.
 
-## Benchmarks
-
-I really didn't focus on performance while making this, but here's the
-benchmarks of me running it on the following program:
-
-```ts
-import { printf } from "stdio.h";
-
-export function bubbleSort(arr: number[], n: number): void {
-  let i: number;
-  let j: number;
-  let temp: number;
-
-  for (i = 0; i < n - 1; i++) {
-    for (j = 0; j < n - i - 1; j++) {
-      if (arr[j] > arr[j + 1]) {
-        temp = arr[j];
-        arr[j] = arr[j + 1];
-        arr[j + 1] = temp;
-      }
-    }
-  }
-}
-
-export function printArray(arr: number[], n: number): void {
-  let i: number;
-  for (i = 0; i < n; i++) {
-    printf("%d ", arr[i]);
-  }
-  printf("\n");
-}
-
-export function main(): number {
-  const arr: number[] = [64, 34, 25, 12, 22, 11, 90];
-  const n: number = 7;
-
-  printf("Original array: ");
-  printArray(arr, n);
-
-  bubbleSort(arr, n);
-
-  printf("Sorted array: ");
-  printArray(arr, n);
-
-  return 0;
-}
-```
-
-(release build, running on an M1 Mac)
-
-```
-> hyperfine -N 'target/release/type-c-rs examples/bubble_sort.ts' --warmup 1000
-Benchmark 1: target/release/type-c-rs examples/bubble_sort.ts
-  Time (mean ± σ):       1.3 ms ±   0.1 ms    [User: 0.5 ms, System: 0.4 ms]
-  Range (min … max):     1.2 ms …   2.1 ms    2258 runs
-```
-
 [1]: https://github.com/podikoglou/type-c
-[2]: https://github.com/babel/babel/commit/c97696c224d718d96848df9e1577f337b45464be
-[3]: https://rachit.pl/post/transpiler/
-[4]: https://swc.rs/
-[5]: https://en.wikipedia.org/wiki/Intermediate_representation
-[6]: https://rustdoc.swc.rs/swc_visit/index.html
-[7]: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
+[2]: https://swc.rs/
+[3]: https://en.wikipedia.org/wiki/Intermediate_representation
+[4]: https://rustdoc.swc.rs/swc_visit/index.html
+[5]: https://github.com/podikoglou/type-c/blob/main/src/parsing/swc/visitor.rs#L43
+[6]: https://docs.oracle.com/javase/8/docs/api/java/lang/StringBuilder.html
