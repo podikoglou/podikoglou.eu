@@ -7,7 +7,7 @@ layout: default
 
 ### Programming-related
 
-- - [Neovim](https://neovim.io) -- Terminal Text Editor. Good fork of
+- [Neovim](https://neovim.io) -- Terminal Text Editor. Good fork of
   [Vim](https://en.wikipedia.org/wiki/Bram_Moolenaar). I mostly use this on my
   laptop.
 
