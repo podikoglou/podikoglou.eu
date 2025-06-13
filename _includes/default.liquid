@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {% include 'style' %}
+    {% include 'scripts' %}
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="{{ site.url }}/feed.xml" />
+  </head>
+  <body>
+    <header>
+      {% include 'navbar' %}
+    </header>
+
+    <main>
+      {{ content }}
+    </main>
+
+    <footer>
+      {% include 'footer' %}
+    </footer>
+  </body>
+</html>

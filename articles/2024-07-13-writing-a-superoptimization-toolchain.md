@@ -1,6 +1,7 @@
 ---
+tags: article
 title: "Superr: A VM and Superoptimization Toolchain"
-layout: article
+layout: default
 date: 2024-07-13
 categories:
 - rust

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-permalink: /about
+permalink: /about.html
 ---
 
 # About Me
@@ -48,4 +48,4 @@ the next few years, I worked on dozens of projects and socialized and
 collaborated with other programmers, which greatly helped me in my journey.
 
 ## Contact
-{% include contact.md %}
+{% include 'contact' %}

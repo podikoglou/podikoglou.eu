@@ -1,0 +1,12 @@
+{
+  "name": "podikoglou.eu",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.1"
+  },
+  "scripts": {
+    "build": "eleventy",
+    "serve": "eleventy --serve"
+  }
+}

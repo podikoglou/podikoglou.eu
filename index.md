@@ -11,7 +11,7 @@ computers and linguistics.
 
 # Writing
 
-{% include writings.html %}
+{% include 'writings' %}
 
 # Contact
-{% include contact.md %}
+{% include 'contact' %}

@@ -1,6 +1,6 @@
 ---
 title: "Designing an Optimal ISA for my Superoptimizer"
-layout: article
+layout: default
 date: 2025-02-25
 draft: true
 categories:

@@ -1,4 +1,5 @@
 ---
+tags: misc
 title: "Essay Writing 101"
 layout: default
 hidden: true

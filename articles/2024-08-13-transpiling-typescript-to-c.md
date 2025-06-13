@@ -1,6 +1,7 @@
 ---
+tags: article
 title: "Transpiling TypeScript to C"
-layout: article
+layout: default
 date: 2024-08-13
 categories:
 - compiler

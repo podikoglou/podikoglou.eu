@@ -1,4 +1,5 @@
 ---
+tags: misc
 title: "Blogs I Like"
 layout: default
 ---
