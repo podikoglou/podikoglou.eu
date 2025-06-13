@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en">
   <head>
-    {% include 'style' %}
-    {% include 'scripts' %}
+    {% include 'head/style' %}
+    {% include 'head/scripts' %}
     <link rel="alternate" type="application/rss+xml" title="Blog" href="{{ site.url }}/feed.xml" />
   </head>
   <body>
     <header>
-      {% include 'navbar' %}
+      {% include 'components/navbar' %}
     </header>
 
     <main>
@@ -15,7 +15,7 @@
     </main>
 
     <footer>
-      {% include 'footer' %}
+      {% include 'components/footer' %}
     </footer>
   </body>
 </html>
