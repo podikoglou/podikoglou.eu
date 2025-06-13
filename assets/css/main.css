@@ -66,11 +66,12 @@ aside {
 }
 
 /* code */
-pre.highlight>code {
+pre {
   display: block;
-  padding: 1.5rem;
+  padding: .5rem;
   overflow-x: auto;
   font-size: 0.9em;
+  border-radius: 10px;
 
   font-family: "Iosevka Fixed Web", monospace;
 }
