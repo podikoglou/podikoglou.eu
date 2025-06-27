@@ -1,6 +1,6 @@
 ---
 title: "Designing an Optimal ISA for my Superoptimizer"
-layout: default
+layout: article
 date: 2025-02-25
 draft: true
 categories:
@@ -9,8 +9,6 @@ categories:
 - vm
 - cpu
 ---
-
-# {{ page.title }}
 
 This is more of a development log than an article, which I usually put on here,
 but I felt the need to write some of my thoughts down, as they may help someone

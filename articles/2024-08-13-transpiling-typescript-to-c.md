@@ -1,7 +1,7 @@
 ---
 tags: article
 title: "Transpiling TypeScript to C"
-layout: default
+layout: article
 date: 2024-08-13
 categories:
 - compiler
@@ -9,8 +9,6 @@ categories:
 - c
 - typescript
 ---
-
-# {{ page.title }}
 
 The code for this project is [available on GitHub][1].
 

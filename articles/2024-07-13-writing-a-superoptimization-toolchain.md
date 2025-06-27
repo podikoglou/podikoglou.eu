@@ -1,15 +1,13 @@
 ---
 tags: article
 title: "Superr: A VM and Superoptimization Toolchain"
-layout: default
+layout: article
 date: 2024-07-13
 categories:
 - rust
 - superr
 - vm
 ---
-
-# {{ page.title }}
 
 _Last Updated on July 23rd_
 

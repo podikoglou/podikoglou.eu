@@ -5,6 +5,7 @@ export default async function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('assets/type/*');
 
   eleventyConfig.addLayoutAlias('default', 'layouts/default');
+  eleventyConfig.addLayoutAlias('article', 'layouts/article');
 
   eleventyConfig.addCollection('articles', collectionsApi => {
     return collectionsApi
