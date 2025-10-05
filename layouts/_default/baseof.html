@@ -4,6 +4,21 @@
     {{ partial "head/style.html" . }}
     {{ partial "head/scripts.html" . }}
     <link rel="alternate" type="application/rss+xml" title="Blog" href="{{ .Site.BaseURL }}/feed.xml" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+    <meta property="og:url" content="{{ .Permalink }}" />
+    <meta property="og:title" content="{{ .Title }}" />
+    <meta property="og:description" content="{{ .Summary | default .Description | default .Site.Params.description }}" />
+    {{ with .Params.image }}<meta property="og:image" content="{{ . | absURL }}" />{{ end }}
+    <meta property="og:site_name" content="{{ .Site.Title }}" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="{{ .Permalink }}" />
+    <meta property="twitter:title" content="{{ .Title }}" />
+    <meta property="twitter:description" content="{{ .Summary | default .Description | default .Site.Params.description }}" />
+    {{ with .Params.image }}<meta property="twitter:image" content="{{ . | absURL }}" />{{ end }}
   </head>
   <body>
     <header>
