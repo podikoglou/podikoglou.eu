@@ -133,8 +133,7 @@
   --color-background: var(--flexoki-paper);
   --color-foreground: var(--flexoki-black);
 
-  --color-link: var(--flexoki-blue-600);
-  --color-link-visited: var(--flexoki-blue-600);
+  --color-link: var(--color-primary);
 }
 
 
@@ -144,9 +143,6 @@
 
     --color-background: var(--flexoki-black);
     --color-foreground: var(--flexoki-paper);
-
-    --color-link: var(--flexoki-blue-400);
-    --color-link-visited: var(--flexoki-blue-400);
   }
 }
 
