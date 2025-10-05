@@ -78,6 +78,13 @@ pre {
   font-family: "Iosevka Fixed Web", monospace;
 }
 
+.cool-link {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+}
+
 /* color scheme */
 @media (prefers-color-scheme: dark) {
   body {

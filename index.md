@@ -13,5 +13,10 @@ computers and linguistics.
 
 {% include 'components/writings' %}
 
+# Cool People
+
+{% include 'components/cool-people' %}
+
 # Contact
+
 {% include 'components/contact' %}
