@@ -1,0 +1,34 @@
+<div class="writings">
+
+  <!-- articles -->
+  <div id="articles">
+
+    <h3>Articles</h3>
+
+    <ul>
+      {{ range .Site.RegularPages }}{{ if eq .Section "posts" }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          <time datetime="{{ .Date }}">{{ .Date.Format "Jan 2006" }}</time>
+        </li>
+      {{ end }}{{ end }}
+    </ul>
+
+  </div>
+
+  <!-- other writing -->
+  <div id="misc">
+
+    <h3>Other Writing</h3>
+
+    <ul>
+      {{ range .Site.RegularPages }}{{ if eq .Section "misc" }}
+        <li>
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </li>
+      {{ end }}{{ end }}
+    </ul>
+
+  </div>
+
+</div>

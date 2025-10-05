@@ -1,0 +1,19 @@
+baseURL = "https://podikoglou.eu"
+languageCode = "en-us"
+title = "Alex Podikoglou"
+
+[markup]
+  [markup.highlight]
+    style = "github-dark"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[outputFormats]
+  [outputFormats.RSS]
+    mediatype = "application/rss+xml"
+    baseName = "feed"
+
+[outputs]
+  home = ["HTML", "RSS"]

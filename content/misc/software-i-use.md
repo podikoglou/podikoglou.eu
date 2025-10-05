@@ -1,10 +1,8 @@
 ---
-tags: misc
 title: "Software I Use"
-layout: default
 ---
 
-# {{ page.title }}
+# {{ .Title }}
 
 ### Programming-related
 

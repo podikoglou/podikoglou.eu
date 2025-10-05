@@ -1,7 +1,5 @@
 ---
-layout: default
 title: About
-permalink: /about.html
 ---
 
 # About Me
@@ -47,5 +45,4 @@ I started programming at 11 or 12. My first programming language was Java. Over
 the next few years, I worked on dozens of projects and socialized and
 collaborated with other programmers, which greatly helped me in my journey.
 
-## Contact
-{% include 'components/contact' %}
+

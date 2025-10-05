@@ -1,11 +1,9 @@
 ---
-tags: misc
 title: "Essay Writing 101"
-layout: default
-hidden: true
+draft: true
 ---
 
-# {{ page.title }}
+# {{ .Title }}
 
 These are my notes from the book
 ['Great Writing 4'](https://www.amazon.com/Great-Writing-Essays-Fifth/dp/0357020855)

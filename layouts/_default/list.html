@@ -1,0 +1,15 @@
+{{ define "main" }}
+<h1>Hi, I'm Alex.</h1>
+
+<p>I'm a Computer Science student from <a href="https://www.britannica.com/summary/Thessaloniki">Thessaloniki</a>. I like to dabble in different technologies and programming languages and read about computers and linguistics.</p>
+
+<h1>Writing</h1>
+
+{{ partial "components/writings.html" . }}
+
+<h1>Cool People</h1>
+
+{{ partial "components/cool-people.html" . }}
+
+{{ partial "components/contact.html" . }}
+{{ end }}

@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    {{ partial "head/style.html" . }}
+    {{ partial "head/scripts.html" . }}
+    <link rel="alternate" type="application/rss+xml" title="Blog" href="{{ .Site.BaseURL }}/feed.xml" />
+  </head>
+  <body>
+    <header>
+      {{ partial "components/navbar.html" . }}
+    </header>
+    <main>
+      {{ block "main" . }}{{ end }}
+    </main>
+    <footer>
+      {{ partial "components/footer.html" . }}
+    </footer>
+  </body>
+</html>
