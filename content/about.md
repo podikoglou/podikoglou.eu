@@ -1,5 +1,6 @@
 ---
 title: About
+description: "I'm a Computer Science student in Thessaloniki who enjoys dabbling in TypeScript, Rust, and Go, and learning about linguistics."
 ---
 
 I'm a Computer Science student based in Thessaloniki. I spend most of my time

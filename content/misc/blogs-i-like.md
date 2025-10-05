@@ -1,5 +1,6 @@
 ---
 title: "Blogs I Like"
+description: "A collection of blogs and personal websites I find interesting and enjoy reading."
 ---
 
 This is a collection of blogs / personal websites which I like. This is updated

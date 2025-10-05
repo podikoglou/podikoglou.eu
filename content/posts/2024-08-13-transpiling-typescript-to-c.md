@@ -5,6 +5,7 @@ categories:
 - typescript
 - compiler
 - transpiler
+description: "An experimental TypeScript to C transpiler that lets you write C code using TypeScript syntax."
 ---
 
 The code for this project is [available on GitHub][1].

@@ -1,6 +1,7 @@
 ---
 title: "Essay Writing 101"
 draft: true
+description: "My notes on essay writing from the book 'Great Writing 4'"
 ---
 
 These are my notes from the book
@@ -73,7 +74,6 @@ It contains:
 - **Introduction:** A hook highlighting the cause/effect relationship and connecting information leading to the thesis statement.
 
 - **Body Paragraphs:** Each paragraph focuses on either causes or effects:
-
   - When focusing on causes: Present each cause with supporting evidence
   - When focusing on effects: Present each effect with detailed examples
 
@@ -88,7 +88,6 @@ It contains:
 - **Introduction:** Presents the subjects being compared and the purpose of comparison.
 
 - **Body Paragraphs:** Can be organized in two ways:
-
   - **Block Method:** Discuss all aspects of one subject before moving to the next
   - **Point-by-Point Method:** Compare specific aspects across all subjects before moving to the next aspect
 
@@ -103,7 +102,6 @@ It contains:
 - **Introduction:** A hook establishing the controversy and a clear thesis statement expressing the main argument.
 
 - **Body Paragraphs:** Each presents a main argument with evidence and reasoning.
-
   - Include a counterargument paragraph
   - Follow with a strong refutation
 
@@ -118,7 +116,6 @@ It contains:
 - **Introduction:** Background information and a thesis stating both problem and solution.
 
 - **Body Paragraphs:**
-
   - Problem explanation with evidence of its significance
   - Detailed solution(s) with supporting evidence
   - Discussion of implementation and expected outcomes

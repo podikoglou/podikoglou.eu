@@ -5,6 +5,7 @@ categories:
 - rust
 - superr
 - vm
+description: "Building a superoptimization toolchain in Rust, including a VM for experimenting with optimization algorithms."
 ---
 
 _Last Updated on July 23rd_

@@ -1,5 +1,6 @@
 ---
 title: "Software I Use"
+description: "A rundown of the software tools I use for programming, development, and productivity."
 ---
 
 ### Programming-related
