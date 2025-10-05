@@ -1,0 +1,247 @@
+:root {
+  --color-syntax-bg: var(--flexoki-paper);
+  --color-syntax-fg: var(--flexoki-black);
+  --color-syntax-highlight: var(--flexoki-50);
+  --color-syntax-line-number: var(--flexoki-600);
+  --color-syntax-active-line: var(--flexoki-cyan-600);
+  --color-syntax-comment: var(--flexoki-600);
+  --color-syntax-operator: var(--flexoki-600);
+  --color-syntax-punctuation: var(--flexoki-600);
+
+  --color-syntax-keyword: var(--flexoki-green-600);
+  --color-syntax-string: var(--flexoki-cyan-600);
+  --color-syntax-number: var(--flexoki-purple-600);
+  --color-syntax-function: var(--flexoki-orange-600);
+  --color-syntax-type: var(--flexoki-yellow-600);
+  --color-syntax-boolean: var(--flexoki-orange-600);
+  --color-syntax-preproc: var(--flexoki-magenta-600);
+  --color-syntax-link: var(--flexoki-cyan-600);
+  --color-syntax-tag: var(--flexoki-blue-600);
+  --color-syntax-attribute: var(--flexoki-blue-600);
+  --color-syntax-property: var(--flexoki-orange-600);
+  --color-syntax-variable: var(--flexoki-blue-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-syntax-bg: var(--flexoki-black);
+    --color-syntax-fg: var(--flexoki-200);
+    --color-syntax-highlight: var(--flexoki-950);
+    --color-syntax-line-number: var(--flexoki-500);
+    --color-syntax-active-line: var(--flexoki-cyan-400);
+    --color-syntax-comment: var(--flexoki-500);
+    --color-syntax-operator: var(--flexoki-500);
+    --color-syntax-punctuation: var(--flexoki-500);
+
+    --color-syntax-keyword: var(--flexoki-green-400);
+    --color-syntax-string: var(--flexoki-cyan-400);
+    --color-syntax-number: var(--flexoki-purple-400);
+    --color-syntax-function: var(--flexoki-orange-400);
+    --color-syntax-type: var(--flexoki-yellow-400);
+    --color-syntax-boolean: var(--flexoki-orange-400);
+    --color-syntax-preproc: var(--flexoki-magenta-400);
+    --color-syntax-link: var(--flexoki-cyan-400);
+    --color-syntax-tag: var(--flexoki-blue-400);
+    --color-syntax-attribute: var(--flexoki-blue-400);
+    --color-syntax-property: var(--flexoki-orange-400);
+    --color-syntax-variable: var(--flexoki-blue-400);
+  }
+}
+
+/* Base styles */
+.bg {
+  color: var(--color-syntax-fg);
+  background-color: var(--color-syntax-bg);
+}
+
+.chroma {
+  color: var(--color-syntax-fg);
+  background-color: var(--color-syntax-bg);
+}
+
+/* Line styles */
+.chroma .lnlinks {
+  outline: none;
+  text-decoration: none;
+  color: inherit;
+}
+
+.chroma .lntd,
+.chroma .lntable {
+  vertical-align: top;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.chroma .hl {
+  background-color: var(--color-syntax-highlight);
+}
+
+.chroma .lnt,
+.chroma .ln {
+  white-space: pre;
+  user-select: none;
+  margin-right: .4em;
+  padding: 0 .4em;
+  color: var(--color-syntax-line-number);
+}
+
+.chroma .line {
+  display: flex;
+}
+
+/* Syntax highlighting - keywords */
+.chroma .k,
+.chroma .kc,
+.chroma .kn,
+.chroma .kp,
+.chroma .kr {
+  color: var(--color-syntax-keyword);
+}
+
+.chroma .kd {
+  color: var(--color-syntax-keyword);
+  font-style: italic;
+}
+
+/* Syntax highlighting - names */
+.chroma .na,
+.chroma .nc,
+.chroma .nf,
+.chroma .fm {
+  color: var(--color-syntax-variable);
+}
+
+.chroma .nl {
+  color: var(--color-syntax-variable);
+  font-style: italic;
+}
+
+.chroma .nt {
+  color: var(--color-syntax-tag);
+}
+
+.chroma .nb {
+  color: var(--color-syntax-function);
+  font-style: italic;
+}
+
+.chroma .bp {
+  font-style: italic;
+}
+
+.chroma .nv,
+.chroma .vc,
+.chroma .vg,
+.chroma .vi,
+.chroma .vm {
+  color: var(--color-syntax-variable);
+  font-style: italic;
+}
+
+/* Syntax highlighting - strings */
+.chroma .s,
+.chroma .sa,
+.chroma .sb,
+.chroma .sc,
+.chroma .dl,
+.chroma .sd,
+.chroma .s2,
+.chroma .se,
+.chroma .sh,
+.chroma .si,
+.chroma .sx,
+.chroma .sr,
+.chroma .s1,
+.chroma .ss {
+  color: var(--color-syntax-string);
+}
+
+/* Syntax highlighting - numbers */
+.chroma .m,
+.chroma .mb,
+.chroma .mf,
+.chroma .mh,
+.chroma .mi,
+.chroma .il,
+.chroma .mo {
+  color: var(--color-syntax-number);
+}
+
+/* Syntax highlighting - operators */
+.chroma .o,
+.chroma .ow {
+  color: var(--color-syntax-operator);
+}
+
+/* Syntax highlighting - comments */
+.chroma .c,
+.chroma .ch,
+.chroma .cm,
+.chroma .c1,
+.chroma .cs {
+  color: var(--color-syntax-comment);
+}
+
+/* Syntax highlighting - preprocessor */
+.chroma .cp,
+.chroma .cpf {
+  color: var(--color-syntax-preproc);
+}
+
+/* Syntax highlighting - other */
+.chroma .gd {
+  color: #f55;
+}
+
+.chroma .ge {
+  text-decoration: underline;
+}
+
+.chroma .gh {
+  font-weight: bold;
+}
+
+.chroma .gi {
+  color: var(--color-syntax-string);
+  font-weight: bold;
+}
+
+.chroma .go {
+  color: var(--color-syntax-comment);
+}
+
+.chroma .gu {
+  font-weight: bold;
+}
+
+.chroma .gl {
+  text-decoration: underline;
+}
+
+.chroma .p,
+.chroma .pi,
+.chroma .pb,
+.chroma .pd,
+.chroma .pl,
+.chroma .ps {
+  color: var(--color-syntax-punctuation);
+}
+
+.chroma .attribute {
+  color: var(--color-syntax-attribute);
+}
+
+.chroma .property {
+  color: var(--color-syntax-property);
+}
+
+.chroma .link {
+  color: var(--color-syntax-link);
+}
+
+.chroma .link:hover {
+  color: var(--color-syntax-link);
+  text-decoration: underline;
+}

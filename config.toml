@@ -4,7 +4,8 @@ title = "Alex Podikoglou"
 
 [markup]
   [markup.highlight]
-    style = "github-dark"
+    noClasses = false
+    codeFences = true
 
 [taxonomies]
   category = "categories"
