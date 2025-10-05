@@ -252,10 +252,16 @@ footer hr {
   justify-content: center;
 }
 
-.accent-picker div {
+.accent-picker button {
   width: 24px;
   height: 24px;
   cursor: pointer;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+  font-size: inherit;
+  color: inherit;
 }
 
 /* aside  */
