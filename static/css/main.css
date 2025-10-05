@@ -148,14 +148,29 @@
 body {
     margin: auto;
     margin-top: 30px;
+    padding: 0 20px;
     line-height: 1.6;
     max-width: 65ch;
     letter-spacing: 0.02em;
-
     font-family: "Recursive", monospace;
-
     background-color: var(--color-background);
     color: var(--color-foreground);
+}
+
+/* Adjust for smaller screens */
+@media (max-width: 768px) {
+    body {
+        margin-top: 20px;
+        padding: 0 16px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0 12px;
+        margin-top: 15px;
+    }
 }
 
 /* TYPOGRAPHY */
