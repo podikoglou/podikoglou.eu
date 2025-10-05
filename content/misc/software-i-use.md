@@ -2,8 +2,6 @@
 title: "Software I Use"
 ---
 
-# {{ .Title }}
-
 ### Programming-related
 
 - [Neovim](https://neovim.io) -- Terminal Text Editor. Good fork of

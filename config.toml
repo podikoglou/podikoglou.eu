@@ -18,3 +18,5 @@ title = "Alex Podikoglou"
 
 [outputs]
   home = ["HTML", "RSS"]
+  page = ["HTML"]
+  section = []

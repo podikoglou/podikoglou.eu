@@ -2,8 +2,6 @@
 title: About
 ---
 
-# About Me
-
 I'm a Computer Science student based in Thessaloniki. I spend most of my time
 dabbling in different technologies and programming languages. I primarily enjoy
 writing code in TypeScript, Rust and Go.

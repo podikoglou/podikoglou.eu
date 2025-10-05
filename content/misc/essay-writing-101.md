@@ -3,8 +3,6 @@ title: "Essay Writing 101"
 draft: true
 ---
 
-# {{ .Title }}
-
 These are my notes from the book
 ['Great Writing 4'](https://www.amazon.com/Great-Writing-Essays-Fifth/dp/0357020855)
 

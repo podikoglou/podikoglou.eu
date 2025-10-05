@@ -2,8 +2,6 @@
 title: "Blogs I Like"
 ---
 
-# {{ .Title }}
-
 This is a collection of blogs / personal websites which I like. This is updated
 when I find a new website that intrigues me.
 
