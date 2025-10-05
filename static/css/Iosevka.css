@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Iosevka Fixed Web";
-  font-display: swap;
-  font-weight: 400;
-  font-stretch: normal;
-  font-style: normal;
-  src:
-    url("/type/IosevkaFixed-Extended.woff2") format("woff2"),
-    url("/type/IosevkaFixed-Extended.ttf") format("truetype");
+    font-family: "Iosevka Fixed Web";
+    font-display: swap;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    src:
+        url("/type/IosevkaFixed-Extended.woff2") format("woff2"),
+        url("/type/IosevkaFixed-Extended.ttf") format("truetype");
 }
