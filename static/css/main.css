@@ -200,8 +200,8 @@ a[href]:visited {
 nav {
   padding-top: 10px;
   padding-bottom: 10px;
-  padding-left: 32px;
-  padding-right: 32px;
+  padding-left: 24px;
+  padding-right: 24px;
 
   background-color: var(--color-primary);
 
@@ -212,7 +212,7 @@ nav {
   div {
     display: flex;
     flex-direction: row;
-    gap: 32px;
+    gap: 24px;
 
     li {
       list-style: none;
