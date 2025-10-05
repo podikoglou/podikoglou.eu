@@ -241,8 +241,25 @@ nav {
 }
 
 /* footer */
+footer {
+  margin-bottom: 20px;
+}
+
 footer hr {
   margin-top: 40px;
+}
+
+.accent-picker {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.accent-picker div {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 }
 
 /* aside  */

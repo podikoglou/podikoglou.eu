@@ -1,0 +1,33 @@
+<footer>
+  <hr />
+  <div class="accent-picker">
+    <div data-color="red" style="background: var(--flexoki-red-600);"></div>
+    <div data-color="orange" style="background: var(--flexoki-orange-600);"></div>
+    <div data-color="yellow" style="background: var(--flexoki-yellow-600);"></div>
+    <div data-color="green" style="background: var(--flexoki-green-600);"></div>
+    <div data-color="cyan" style="background: var(--flexoki-cyan-600);"></div>
+    <div data-color="blue" style="background: var(--flexoki-blue-600);"></div>
+    <div data-color="purple" style="background: var(--flexoki-purple-600);"></div>
+    <div data-color="magenta" style="background: var(--flexoki-magenta-600);"></div>
+  </div>
+</footer>
+
+<script>
+  const savedAccent = localStorage.getItem('accent');
+  const isDark = matchMedia('(prefers-color-scheme: dark)').matches;
+
+  if (savedAccent) {
+    const shade = isDark ? '400' : '600';
+    document.documentElement.style.setProperty('--color-primary', `var(--flexoki-${savedAccent}-${shade})`);
+  }
+
+  document.querySelectorAll('[data-color]').forEach(el => {
+    el.onclick = () => {
+      const color = el.dataset.color;
+      const shade = matchMedia('(prefers-color-scheme: dark)').matches ? '400' : '600';
+
+      localStorage.setItem('accent', color);
+      document.documentElement.style.setProperty('--color-primary', `var(--flexoki-${color}-${shade})`);
+    };
+  });
+</script>
