@@ -23,7 +23,7 @@
     <meta property="twitter:description" content="{{ .Summary | default .Description | default .Site.Params.description | truncate 200 }}" />
     {{ with .Params.image }}<meta property="twitter:image" content="{{ . | absURL }}" />{{ end }}
   </head>
-  <body>
+  <body class="h-card">
     <header>
       {{ partial "components/navbar.html" . }}
     </header>
